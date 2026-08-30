@@ -43,6 +43,22 @@
             margin-bottom: 30px;
         }
 
+        /* Estilos añadidos para el logo SVG */
+        .logo-container {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 20px auto;
+        }
+
+        .logo-container svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-color);
+        }
+
         h1 {
             color: var(--accent-gold);
             font-size: 1.6rem;
@@ -200,6 +216,52 @@
 
     <div class="container">
         <header>
+            <!-- Logo SVG integrado -->
+            <div class="logo-container">
+                <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="1000" height="500" rx="30" fill="#0c0c0c"/>
+                    <path d="M 0 0 L 1000 500 M 1000 0 L 0 500" stroke="#800b22" stroke-width="130"/>
+                    <path d="M 0 0 L 1000 500 M 1000 0 L 0 500" stroke="#800b22" stroke-width="180" opacity="0.15"/>
+                    <rect x="0" y="210" width="1000" height="80" fill="#800b22" opacity="0.3"/>
+                    <rect x="460" y="0" width="80" height="500" fill="#0c0c0c"/>
+                    <rect x="0" y="225" width="1000" height="50" fill="#0c0c0c"/>
+                    <g transform="translate(500, 250)">
+                        <!-- Estrellas en patrón circular -->
+                        <g fill="#dcdcdc">
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(0)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(30)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(60)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(90)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(120)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(150)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(180)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(210)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(240)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(270)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(300)"/>
+                            <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(330)"/>
+                        </g>
+                        <!-- Círculo Central -->
+                        <circle cx="0" cy="0" r="135" fill="#dcdcdc"/>
+                        <!-- Símbolo Central de la Águila / Runa -->
+                        <g fill="#0c0c0c" transform="scale(1.15)">
+                            <path d="M 0 -45 L 8 -12 L 0 -22 L -8 -12 Z"/>
+                            <rect x="-3" y="-22" width="6" height="62"/>
+                            <path d="M 0 10 L 22 40 L 14 40 L 0 20 L -14 40 L -22 40 Z"/>
+                            <!-- Ala Izquierda -->
+                            <path d="M -10 -22 L -115 -22 L -120 -12 L -10 -12 Z"/>
+                            <path d="M -10 -9 L -100 -9 L -105 0 L -10 0 Z"/>
+                            <path d="M -10 3 L -85 3 L -90 12 L -10 12 Z"/>
+                            <path d="M -10 15 L -68 15 L -72 23 L -10 23 Z"/>
+                            <!-- Ala Derecha -->
+                            <path d="M 10 -22 L 115 -22 L 120 -12 L 10 -12 Z"/>
+                            <path d="M 10 -9 L 100 -9 L 105 0 L 10 0 Z"/>
+                            <path d="M 10 3 L 85 3 L 90 12 L 10 12 Z"/>
+                            <path d="M 10 15 L 68 15 L 72 23 L 10 23 Z"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
             <h1>CONSEJO SUPREMO DE LEGITIMIDAD</h1>
             <div class="subtitle">"La mirada del soberano no juzga el presente; juzga el destino de los imperios."</div>
         </header>
