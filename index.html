@@ -1,53 +1,81 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consejo Supremo de Legitimidad | C.S.L.</title>
+    <title>Consejo Supremo de Legitimidad | Censo Oficial y Registro Doctrinario</title>
+    
+    <!-- Metaetiquetas SEO & Open Graph -->
+    <meta name="description" content="Plataforma de Censo Institucional y Declaración de Adhesión Doctrinal del Consejo Supremo de Legitimidad (C.S.L.).">
+    <meta name="author" content="Consejo Supremo de Legitimidad">
+    <meta property="og:title" content="Consejo Supremo de Legitimidad | Portal Oficial de Censo">
+    <meta property="og:description" content="Registro institucional de legitimidad cívica, orden dinástico y restauración civilizatoria.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Symbol_of_Authority.svg/1200px-Symbol_of_Authority.svg.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #0b0b0b;
-            --card-bg: #141414;
-            --border-color: #332b22;
+            --bg-color: #050505;
+            --card-bg: rgba(18, 18, 20, 0.95);
+            --border-color: #2a2219;
             --accent-gold: #c5a059;
+            --accent-gold-glow: rgba(197, 160, 89, 0.3);
             --accent-red: #8b0000;
-            --text-main: #d1d1d1;
-            --text-muted: #888888;
+            --text-main: #e1e1e1;
+            --text-muted: #8a8a8a;
+            --font-heading: 'Cinzel', serif;
+            --font-code: 'JetBrains Mono', monospace;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(139, 0, 0, 0.12), transparent 70%),
+                radial-gradient(circle at 50% 100%, rgba(197, 160, 89, 0.05), transparent 70%);
             color: var(--text-main);
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 20px;
+            font-family: var(--font-code);
+            padding: 30px 15px;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 750px;
+            max-width: 850px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            padding: 45px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(197, 160, 89, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 4px;
         }
 
+        /* BANNER Y LOGO SVG */
         header {
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 25px;
-            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        /* Estilos añadidos para el logo SVG */
         .logo-container {
             width: 100%;
-            max-width: 320px;
-            margin: 0 auto 20px auto;
+            max-width: 360px;
+            margin: 0 auto 25px auto;
+            transition: transform 0.4s ease;
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.02);
         }
 
         .logo-container svg {
@@ -55,179 +83,387 @@
             height: auto;
             display: block;
             border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--border-color);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 15px var(--accent-gold-glow);
+            border: 1px solid var(--accent-gold);
         }
 
         h1 {
+            font-family: var(--font-heading);
             color: var(--accent-gold);
-            font-size: 1.6rem;
-            letter-spacing: 2px;
-            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
         }
 
         .subtitle {
             font-size: 0.85rem;
             color: var(--text-muted);
             font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
         }
 
-        .question-block {
+        /* CONTADOR IMPERIAL EN TIEMPO REAL */
+        .live-counter-box {
+            background: rgba(10, 10, 12, 0.8);
+            border: 1px solid var(--accent-gold);
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            box-shadow: inset 0 0 15px rgba(197, 160, 89, 0.05);
+        }
+
+        .live-counter-box h2 {
+            font-family: var(--font-heading);
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .live-counter-box span {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px var(--accent-gold);
+        }
+
+        /* BARRA DE PROGRESO DE FORMULARIO */
+        .progress-wrapper {
+            margin-bottom: 30px;
+            background: #0d0d0d;
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            padding: 4px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
+            transition: width 0.3s ease-in-out;
+            box-shadow: 0 0 8px var(--accent-gold-glow);
+        }
+
+        .progress-text {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        /* ESTILOS DE PREGUNTAS Y FIELDSETS */
+        fieldset {
+            border: 1px solid #1f1a14;
+            background: rgba(10, 10, 10, 0.4);
+            padding: 20px;
             margin-bottom: 25px;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        fieldset:focus-within {
+            border-color: var(--accent-gold);
+        }
+
+        legend {
+            font-family: var(--font-heading);
+            color: var(--accent-gold);
+            padding: 0 10px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 12px;
+            font-size: 0.92rem;
             color: #eaeaea;
+            line-height: 1.5;
         }
 
-        select, textarea {
+        select {
             width: 100%;
-            background: #1c1c1c;
+            background: #121214;
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 12px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
+            padding: 14px;
+            font-family: var(--font-code);
+            font-size: 0.88rem;
             outline: none;
-            transition: border-color 0.3s;
-        }
-
-        select:focus, textarea:focus {
-            border-color: var(--accent-gold);
-        }
-
-        textarea {
-            resize: vertical;
-            height: 90px;
-        }
-
-        button {
-            width: 100%;
-            background: var(--accent-gold);
-            color: #0b0b0b;
-            border: none;
-            padding: 15px;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            font-size: 1rem;
-            letter-spacing: 1px;
             cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 10px;
+            border-radius: 3px;
+            transition: all 0.3s;
         }
 
-        button:hover {
-            background: #d4b16a;
+        select:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px var(--accent-gold-glow);
+            background: #18181c;
         }
 
-        /* Estilo del Ticket de Censo */
+        button.btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #c5a059, #9e7d3b);
+            color: #050505;
+            border: none;
+            padding: 18px;
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            border-radius: 3px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        button.btn-submit:hover {
+            background: linear-gradient(135deg, #d4b16a, #c5a059);
+            box-shadow: 0 0 20px var(--accent-gold-glow);
+            transform: translateY(-1px);
+        }
+
+        button.btn-submit:disabled {
+            background: #444;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* SECCIÓN TICKET DE CENSO INSTITUCIONAL */
         #ticket-section {
             display: none;
-            text-align: center;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .ticket {
             background: #f4f1ea;
             color: #111;
-            padding: 30px;
-            border: 2px dashed #b5a48b;
-            text-align: left;
+            padding: 35px;
+            border: 2px solid #b5a48b;
             position: relative;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border-radius: 2px;
         }
 
         .ticket-header {
-            font-size: 0.75rem;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            color: #555;
+            border-bottom: 2px solid #111;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .ticket-title {
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
         }
 
-        .ticket-body p {
-            font-size: 0.85rem;
-            margin: 6px 0;
-            line-height: 1.4;
+        .ticket-hash {
+            font-size: 0.68rem;
+            word-break: break-all;
+            background: #e2ddd3;
+            padding: 8px;
+            border: 1px solid #c4bcae;
+            margin-top: 15px;
+        }
+
+        .ticket-grid {
+            display: grid;
+            grid-template-columns: 1fr 150px;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .ticket-answers-list {
+            font-size: 0.78rem;
+            max-height: 280px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #faf8f5;
+        }
+
+        .ticket-answers-list p {
+            margin-bottom: 6px;
+            padding-bottom: 4px;
+            border-bottom: 1px stroke #eee;
+        }
+
+        .qr-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas#qrCanvas {
+            border: 2px solid #111;
+            background: #fff;
+            padding: 5px;
         }
 
         .stamp {
             display: inline-block;
-            border: 2px solid var(--accent-red);
+            border: 3px double var(--accent-red);
             color: var(--accent-red);
-            padding: 6px 12px;
-            font-size: 0.75rem;
+            padding: 8px 15px;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
             font-weight: bold;
             text-transform: uppercase;
-            transform: rotate(-3deg);
+            transform: rotate(-4deg);
             margin-top: 20px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
-        /* Panel de Contadores en Tiempo Real */
-        .live-stats {
-            margin-top: 35px;
+        /* SECCIÓN INFERIOR DE FACCIONES (INTERACTIVAS) */
+        .factions-section {
+            margin-top: 50px;
             border-top: 1px solid var(--border-color);
-            padding-top: 20px;
+            padding-top: 35px;
         }
 
-        .live-stats h3 {
-            font-size: 0.95rem;
-            color: var(--accent-gold);
+        .factions-title {
+            font-family: var(--font-heading);
             text-align: center;
-            margin-bottom: 15px;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .factions-subtitle-info {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .factions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .faction-card {
+            background: #0d0d0f;
+            border: 1px solid #222;
+            padding: 25px 20px;
+            border-radius: 6px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            user-select: none;
+        }
+
+        .faction-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .faction-card h4 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
             letter-spacing: 1px;
         }
 
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            background: #181818;
-            padding: 8px 12px;
-            border: 1px solid #222;
+        .faction-card p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* 1. Movimiento Nacional Zetario (Púrpura) */
+        .faction-zetario {
+            border-color: rgba(138, 43, 226, 0.4);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+        }
+        .faction-zetario h4 { color: #b967ff; }
+        .faction-zetario.active-faction {
+            border-color: #a855f7 !important;
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.9), inset 0 0 15px rgba(168, 85, 247, 0.5) !important;
+            transform: scale(1.05);
+        }
+
+        /* 2. Bloque Ideológico Confert-Vierts (Gris) */
+        .faction-confert {
+            border-color: rgba(160, 160, 160, 0.4);
+            box-shadow: 0 0 10px rgba(160, 160, 160, 0.2);
+        }
+        .faction-confert h4 { color: #e0e0e0; }
+        .faction-confert.active-faction {
+            border-color: #ffffff !important;
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.85), inset 0 0 15px rgba(200, 200, 200, 0.4) !important;
+            transform: scale(1.05);
+        }
+
+        /* 3. Movimiento Primer Orden (Negro Obsidian) */
+        .faction-primer-orden {
+            background: linear-gradient(145deg, #050505, #111115);
+            border-color: rgba(80, 80, 80, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        }
+        .faction-primer-orden h4 { color: #ffffff; text-shadow: 0 0 5px rgba(255,255,255,0.4); }
+        .faction-primer-orden.active-faction {
+            border-color: #c5a059 !important;
+            box-shadow: 0 0 35px rgba(197, 160, 89, 0.8), 0 0 20px rgba(0, 0, 0, 1) !important;
+            transform: scale(1.05);
         }
 
         .already-voted-msg {
-            background: #1a1510;
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
+            background: rgba(139, 0, 0, 0.2);
+            border: 1px solid var(--accent-red);
+            color: #ff8888;
             padding: 15px;
             text-align: center;
             margin-bottom: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            .ticket-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- HEADER INSTITUCIONAL -->
         <header>
-            <!-- Logo SVG integrado -->
             <div class="logo-container">
-                <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="1000" height="500" rx="30" fill="#0c0c0c"/>
-                    <path d="M 0 0 L 1000 500 M 1000 0 L 0 500" stroke="#800b22" stroke-width="130"/>
-                    <path d="M 0 0 L 1000 500 M 1000 0 L 0 500" stroke="#800b22" stroke-width="180" opacity="0.15"/>
+                <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-label="Escudo e insignia del Consejo Supremo de Legitimidad">
+                    <defs>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#c5a059"/>
+                            <stop offset="100%" stop-color="#7a6130"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="1000" height="500" rx="20" fill="#08080a"/>
+                    <path d="M 0 0 L 1000 500 M 1000 0 L 0 500" stroke="#800b22" stroke-width="120"/>
+                    <path d="M 0 0 L 1000 500 M 1000 0 L 0 500" stroke="#800b22" stroke-width="170" opacity="0.15"/>
                     <rect x="0" y="210" width="1000" height="80" fill="#800b22" opacity="0.3"/>
-                    <rect x="460" y="0" width="80" height="500" fill="#0c0c0c"/>
-                    <rect x="0" y="225" width="1000" height="50" fill="#0c0c0c"/>
+                    <rect x="460" y="0" width="80" height="500" fill="#08080a"/>
+                    <rect x="0" y="225" width="1000" height="50" fill="#08080a"/>
                     <g transform="translate(500, 250)">
-                        <!-- Estrellas en patrón circular -->
-                        <g fill="#dcdcdc">
+                        <g fill="url(#goldGrad)">
                             <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(0)"/>
                             <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(30)"/>
                             <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(60)"/>
@@ -241,19 +477,15 @@
                             <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(300)"/>
                             <polygon points="0,-185 11,-152 42,-152 17,-133 26,-100 0,-119 -26,-100 -17,-133 -42,-152 -11,-152" transform="rotate(330)"/>
                         </g>
-                        <!-- Círculo Central -->
                         <circle cx="0" cy="0" r="135" fill="#dcdcdc"/>
-                        <!-- Símbolo Central de la Águila / Runa -->
-                        <g fill="#0c0c0c" transform="scale(1.15)">
+                        <g fill="#08080a" transform="scale(1.15)">
                             <path d="M 0 -45 L 8 -12 L 0 -22 L -8 -12 Z"/>
                             <rect x="-3" y="-22" width="6" height="62"/>
                             <path d="M 0 10 L 22 40 L 14 40 L 0 20 L -14 40 L -22 40 Z"/>
-                            <!-- Ala Izquierda -->
                             <path d="M -10 -22 L -115 -22 L -120 -12 L -10 -12 Z"/>
                             <path d="M -10 -9 L -100 -9 L -105 0 L -10 0 Z"/>
                             <path d="M -10 3 L -85 3 L -90 12 L -10 12 Z"/>
                             <path d="M -10 15 L -68 15 L -72 23 L -10 23 Z"/>
-                            <!-- Ala Derecha -->
                             <path d="M 10 -22 L 115 -22 L 120 -12 L 10 -12 Z"/>
                             <path d="M 10 -9 L 100 -9 L 105 0 L 10 0 Z"/>
                             <path d="M 10 3 L 85 3 L 90 12 L 10 12 Z"/>
@@ -266,336 +498,487 @@
             <div class="subtitle">"La mirada del soberano no juzga el presente; juzga el destino de los imperios."</div>
         </header>
 
-        <!-- Mensaje para usuarios que ya votaron -->
-        <div id="voted-message" class="already-voted-msg" style="display: none;">
-            SU VOTO YA HA SIDO REGISTRADO Y CONSOLIDADO EN EL SISTEMA.
-        </div>
+        <main>
+            <!-- CONTADOR EN TIEMPO REAL DESDE FIREBASE -->
+            <div class="live-counter-box">
+                <h2 id="contador-votos">TOTAL CIUDADANOS REGISTRADOS: <span>Cargando...</span></h2>
+            </div>
 
-        <!-- Formulario de Censo -->
-        <div id="form-section">
-            <form id="censusForm">
+            <div id="voted-message" class="already-voted-msg" role="alert">
+                ⚠ REGISTRO PREVIO DETECTADO: Su adhesión ya ha sido procesada e inscripta en la base de datos oficial.
+            </div>
+
+            <!-- FORMULARIO PRINCIPAL -->
+            <section id="form-section">
+                <!-- BARRA DE PROGRESO INTERACTIVA -->
+                <div class="progress-wrapper">
+                    <div class="progress-bar" id="progressBar"></div>
+                    <div class="progress-text" id="progressText">Completado: 0 / 15</div>
+                </div>
+
+                <form id="censusForm" novalidate>
+                    
+                    <!-- UBICACIÓN GEOGRÁFICA -->
+                    <fieldset>
+                        <legend>I. PROCEDENCIA GEOGRÁFICA</legend>
+                        <label for="estadoSelect">Seleccione el Estado de la República donde reside:</label>
+                        <select name="estado" id="estadoSelect" required aria-required="true">
+                            <option value="">Seleccione su estado...</option>
+                            <option value="Amazonas">Amazonas</option>
+                            <option value="Anzoátegui">Anzoátegui</option>
+                            <option value="Apure">Apure</option>
+                            <option value="Aragua">Aragua</option>
+                            <option value="Barinas">Barinas</option>
+                            <option value="Bolívar">Bolívar</option>
+                            <option value="Carabobo">Carabobo</option>
+                            <option value="Cojedes">Cojedes</option>
+                            <option value="Delta Amacuro">Delta Amacuro</option>
+                            <option value="Distrito Capital">Distrito Capital</option>
+                            <option value="Falcón">Falcón</option>
+                            <option value="Guárico">Guárico</option>
+                            <option value="Lara">Lara</option>
+                            <option value="Mérida">Mérida</option>
+                            <option value="Miranda">Miranda</option>
+                            <option value="Monagas">Monagas</option>
+                            <option value="Nueva Esparta">Nueva Esparta</option>
+                            <option value="Portuguesa">Portuguesa</option>
+                            <option value="Sucre">Sucre</option>
+                            <option value="Táchira">Táchira</option>
+                            <option value="Trujillo">Trujillo</option>
+                            <option value="Vargas (La Guaira)">Vargas (La Guaira)</option>
+                            <option value="Yaracuy">Yaracuy</option>
+                            <option value="Zulia">Zulia</option>
+                        </select>
+                    </fieldset>
+
+                    <!-- EVALUACIÓN DOCTRINAL (14 PREGUNTAS MÁS ESTADO = 15) -->
+                    <fieldset>
+                        <legend>II. EVALUACIÓN DE ADHESIÓN DOCTRINAL</legend>
+
+                        <!-- P1 -->
+                        <div class="question-block">
+                            <label for="q1">1. ¿Considera que la democracia partidista ha sido un mecanismo de expoliación nacional en lugar de representación legítima?</label>
+                            <select name="q1" id="q1" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Absolutamente, pacto de élites corruptas">Absolutamente, es un pacto de élites corruptas</option>
+                                <option value="Ha decaído en partitocracia estéril">Ha decaído en una partitocracia estéril</option>
+                                <option value="Confío en el sistema actual">Confío en el sistema democrático actual</option>
+                            </select>
+                        </div>
+
+                        <!-- P2 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q2">2. ¿Juzga usted que la alternancia electoral periódica destruye la continuidad y planificación a largo plazo?</label>
+                            <select name="q2" id="q2" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Sí, el cortoplacismo arruina al Estado">Sí, el cortoplacismo electoral arruina el Estado</option>
+                                <option value="Depende de las alianzas políticas">Depende de las alianzas políticas</option>
+                                <option value="La alternancia es indispensable">La alternancia constante es indispensable</option>
+                            </select>
+                        </div>
+
+                        <!-- P3 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q3">3. Ante la bancarrota moral de la república burguesa, ¿apoyaría la instauración de una Cuarta Vía Política de orden tradicional e imperial?</label>
+                            <select name="q3" id="q3" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Única vía para rescatar la soberanía">Es la única vía sensata para rescatar la soberanía</option>
+                                <option value="Requiero mayor profundidad doctrinal">Requiero mayor profundidad doctrinal</option>
+                                <option value="Prefiero mantener el modelo republicano">Prefiero mantener el modelo republicano</option>
+                            </select>
+                        </div>
+
+                        <!-- P4 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q4">4. ¿Reconoce que el sufragio universal sin jerarquía cívica degrada el gobierno a un concurso demagógico?</label>
+                            <select name="q4" id="q4" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Sí, premia la demagogia">Sí, el voto sin mérito premia la demagogia</option>
+                                <option value="Tiene fallas pero es necesario">Tiene fallas pero es necesario</option>
+                                <option value="El voto universal es sagrado">El voto universal es sagrado e indiscutible</option>
+                            </select>
+                        </div>
+
+                        <!-- P5 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q5">5. ¿Valora la recuperación de los principios de autoridad, jerarquía y honor frente al igualitarismo moderno?</label>
+                            <select name="q5" id="q5" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Pilares indispensables de civilización">Son los pilares indispensables de toda civilización</option>
+                                <option value="Debe haber un equilibrio flexible">Debe haber un equilibrio flexible</option>
+                                <option value="El igualitarismo es superior">El igualitarismo moderno es superior</option>
+                            </select>
+                        </div>
+
+                        <!-- P6 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q6">6. ¿Comprende que la legitimidad del Estado proviene de la continuidad dinástica y el mérito, no de comicios manipulados?</label>
+                            <select name="q6" id="q6" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="La historia supera al voto efímero">Totalmente, la historia supera al efímero voto</option>
+                                <option value="Concepto complejo de aplicar hoy">Es un concepto complejo de aplicar hoy</option>
+                                <option value="Solo las urnas otorgan legitimidad">Solo las urnas otorgan legitimidad</option>
+                            </select>
+                        </div>
+
+                        <!-- P7 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q7">7. ¿Estaría dispuesto a dar una oportunidad a la restauración de un sistema monárquico imperial que garantice estabilidad?</label>
+                            <select name="q7" id="q7" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Total apoyo al orden imperial">Sí, daría total oportunidad a este orden</option>
+                                <option value="Evaluación bajo resultados prácticos">Lo evaluaría bajo resultados prácticos</option>
+                                <option value="Rechazo total a la monarquía">Rechazo de plano cualquier monarquía</option>
+                            </select>
+                        </div>
+
+                        <!-- P8 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q8">8. ¿Considera que los partidos de la falsa oposición han actuado como cómplices funcionales del régimen?</label>
+                            <select name="q8" id="q8" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Mercenarios de la política rentista">Son mercenarios de la política rentista</option>
+                                <option value="Incompetentes e ingenuos">Han sido incompetentes e ingenuos</option>
+                                <option value="Representan genuina oposición">Representan genuinamente la oposición</option>
+                            </select>
+                        </div>
+
+                        <!-- P9 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q9">9. ¿Asume que el liberalismo salvaje y el colectivismo son dos caras de la misma moneda materialista que destruye pueblos?</label>
+                            <select name="q9" id="q9" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Reducen al hombre a mercancía">Ambos reducen al hombre a una simple mercancía</option>
+                                <option value="El capitalismo ofrece mayor libertad">El capitalismo al menos ofrece libertad</option>
+                                <option value="Son sistemas opuestos">El socialismo y el capitalismo son opuestos</option>
+                            </select>
+                        </div>
+
+                        <!-- P10 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q10">10. ¿Apoya una economía de mérito patriótico subordinada al interés supremo del Estado Imperial (Modelo Era Meiji)?</label>
+                            <select name="q10" id="q10" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Totalmente, soberanía sobre el mercado">Totalmente, la soberanía precede al mercado</option>
+                                <option value="Modelo a evaluar con cautela">Es un modelo interesante a evaluar</option>
+                                <option value="Prefiero libre mercado desregulado">Prefiero el libre mercado desregulado</option>
+                            </select>
+                        </div>
+
+                        <!-- P11 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q11">11. ¿Reconoce la necesidad de una vanguardia intelectual y cívica articulada que guíe la reconquista moral?</label>
+                            <select name="q11" id="q11" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Indispensable para evitar la demagogia">Es indispensable para evitar el caos demagógico</option>
+                                <option value="Importante pero no determinante">Es importante pero no determinante</option>
+                                <option value="Toda vanguardia es antidemocrática">Rechazo la idea de vanguardias cívicas</option>
+                            </select>
+                        </div>
+
+                        <!-- P12 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q12">12. ¿Considera sagrada la protección de la soberanía territorial e identidad cultural frente al globalismo homogenizador?</label>
+                            <select name="q12" id="q12" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Innegociable, la identidad es sagrada">La identidad nacional es innegociable y sagrada</option>
+                                <option value="Debe haber apertura moderada">Debe haber apertura multicultural moderada</option>
+                                <option value="El globalismo es inevitable">El globalismo es el progreso natural</option>
+                            </select>
+                        </div>
+
+                        <!-- P13 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q13">13. ¿Apoya la reestructuración del servicio cívico-militar obligatorio enfocado en la disciplina, honor y tecnología?</label>
+                            <select name="q13" id="q13" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Urgente para forjar el carácter cívico">Es urgente para forjar el carácter cívico</option>
+                                <option value="Solo en carácter voluntario">Debe ser de carácter estrictamente voluntario</option>
+                                <option value="Innecesario en la época actual">Es innecesario en la época actual</option>
+                            </select>
+                        </div>
+
+                        <!-- P14 -->
+                        <div class="question-block" style="margin-top:20px;">
+                            <label for="q14">14. ¿Juzga necesario la auditoría irrevocable y expropiación de bienes a quienes saquearon la riqueza de la nación?</label>
+                            <select name="q14" id="q14" required aria-required="true">
+                                <option value="">Seleccione postura...</option>
+                                <option value="Justicia histórica e inapelable">Es una medida de justicia histórica e inapelable</option>
+                                <option value="Solo bajo tribunales ordinarios">Solo mediante juicio ordinario tradicional</option>
+                                <option value="Inconveniencia por estabilidad económica">Inconveniente por riesgos a la estabilidad</option>
+                            </select>
+                        </div>
+
+                    </fieldset>
+
+                    <button type="submit" id="btn-votar" class="btn-submit">CONSOLIDAR ADHESIÓN Y REGISTRAR CENSO</button>
+                </form>
+            </section>
+
+            <!-- TICKET EXPEDIDO (SECCIÓN OCULTA INICIALMENTE) -->
+            <section id="ticket-section" aria-live="polite">
+                <div class="ticket">
+                    <div class="ticket-header">
+                        <div>
+                            <div class="ticket-title">CERTIFICADO SUPREMO DE ADHESIÓN</div>
+                            <small>CONSEJO SUPREMO DE LEGITIMIDAD — REGISTRO CENSUAL</small>
+                        </div>
+                        <div style="text-align: right;">
+                            <strong style="font-size: 1.1rem; font-family: var(--font-code);" id="ticketNumber">N° CSL-000001</strong>
+                        </div>
+                    </div>
+
+                    <div class="ticket-grid">
+                        <div>
+                            <p><strong>ESTADO INSCRIBIMIENTO:</strong> <span id="lblEstado"></span></p>
+                            <p><strong>FACCIÓN RESPALDADA:</strong> <span id="lblFaccion" style="color:var(--accent-red); font-weight:bold;"></span></p>
+                            <p><strong>FECHA EMISIÓN:</strong> <span id="lblFecha"></span></p>
+                            <p><strong>ESTATUS CÍVICO:</strong> ADHERIDO / REGISTRADO EN FIREBASE</p>
+                            
+                            <div style="margin-top: 15px;">
+                                <strong style="font-size:0.75rem;">DESGLOSE OFICIAL DE RESPUESTAS REGISTRADAS:</strong>
+                                <div class="ticket-answers-list" id="answersList"></div>
+                            </div>
+                        </div>
+
+                        <div class="qr-box">
+                            <canvas id="qrCanvas" width="120" height="120"></canvas>
+                            <small style="font-size:0.6rem; margin-top:5px; text-align:center;">VERIFICACIÓN C-SHA256</small>
+                        </div>
+                    </div>
+
+                    <div class="ticket-hash" id="lblHash">HASH CS-256: Calculando firma criptográfica...</div>
+
+                    <div style="text-align: center;">
+                        <div class="stamp">DOCUMENTO OFICIAL IRREVOCABLE</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BLOQUE INFERIOR DE FACCIONES ALIANZA INTERACTIVAS -->
+            <section class="factions-section">
+                <div class="factions-title">FACCIONES Y MOVIMIENTOS INTEGRADOS EN LA ALIANZA IMPERIAL</div>
+                <div class="factions-subtitle-info">Haga clic en la facción de su preferencia para manifestar su respaldo específico dentro del Censo:</div>
                 
-                <!-- Pregunta Extra: Estado -->
-                <div class="question-block">
-                    <label>Estado de procedencia:</label>
-                    <select name="estado" id="estadoSelect">
-                        <option value="">Seleccione su estado...</option>
-                        <option value="Amazonas">Amazonas</option>
-                        <option value="Anzoátegui">Anzoátegui</option>
-                        <option value="Apure">Apure</option>
-                        <option value="Aragua">Aragua</option>
-                        <option value="Barinas">Barinas</option>
-                        <option value="Bolívar">Bolívar</option>
-                        <option value="Carabobo">Carabobo</option>
-                        <option value="Cojedes">Cojedes</option>
-                        <option value="Delta Amacuro">Delta Amacuro</option>
-                        <option value="Distrito Capital">Distrito Capital</option>
-                        <option value="Falcón">Falcón</option>
-                        <option value="Guárico">Guárico</option>
-                        <option value="Lara">Lara</option>
-                        <option value="Mérida">Mérida</option>
-                        <option value="Miranda">Miranda</option>
-                        <option value="Monagas">Monagas</option>
-                        <option value="Nueva Esparta">Nueva Esparta</option>
-                        <option value="Portuguesa">Portuguesa</option>
-                        <option value="Sucre">Sucre</option>
-                        <option value="Táchira">Táchira</option>
-                        <option value="Trujillo">Trujillo</option>
-                        <option value="Vargas (La Guaira)">Vargas (La Guaira)</option>
-                        <option value="Yaracuy">Yaracuy</option>
-                        <option value="Zulia">Zulia</option>
-                    </select>
-                </div>
+                <div class="factions-grid">
+                    
+                    <!-- 1. Movimiento Nacional Zetario -->
+                    <article class="faction-card faction-zetario" data-faccion="Movimiento Nacional Zetario">
+                        <h4>MOVIMIENTO NACIONAL ZETARIO</h4>
+                        <p>Vanguardia doctrinaria de restauración espiritual y soberanía cívica. Impulsores de la disciplina imperial y orden dinástico.</p>
+                    </article>
 
-                <!-- Pregunta 1 -->
-                <div class="question-block">
-                    <label>1. ¿Considera que la democracia partidista en Venezuela ha sido un mecanismo de expoliación nacional en lugar de un sistema de representación legítima?</label>
-                    <select name="q1">
-                        <option value="">Seleccione...</option>
-                        <option value="Absolutamente, es un pacto de élites corruptas">Absolutamente, es un pacto de élites corruptas</option>
-                        <option value="Ha decaído en una partitocracia estéril">Ha decaído en una partitocracia estéril</option>
-                        <option value="Confío en el sistema democrático actual">Confío en el sistema democrático actual</option>
-                    </select>
-                </div>
+                    <!-- 2. Bloque Ideológico Confert-Vierts -->
+                    <article class="faction-card faction-confert" data-faccion="Bloque Ideológico Confert-Vierts">
+                        <h4>BLOQUE IDEOLÓGICO CONFERT-VIERTS</h4>
+                        <p>Estructura civilizatoria encargada de la formulación técnica, análisis del Estado y continuidad del mérito patriótico.</p>
+                    </article>
 
-                <!-- Pregunta 2 -->
-                <div class="question-block">
-                    <label>2. ¿Juzga usted que la alternancia electoral periódica destruye la continuidad y planificación a largo plazo que una gran nación requiere?</label>
-                    <select name="q2">
-                        <option value="">Seleccione...</option>
-                        <option value="Sí, el cortoplacismo electoral arruina el Estado">Sí, el cortoplacismo electoral arruina el Estado</option>
-                        <option value="Depende de las alianzas políticas">Depende de las alianzas políticas</option>
-                        <option value="La alternancia constante es indispensable">La alternancia constante es indispensable</option>
-                    </select>
-                </div>
+                    <!-- 3. Movimiento Primer Orden -->
+                    <article class="faction-card faction-primer-orden" data-faccion="Movimiento Primer Orden">
+                        <h4>MOVIMIENTO PRIMER ORDEN</h4>
+                        <p>Fuerza rectora de orden institutional, custodia de los pilares tradicionales e inviolabilidad del destino nacional.</p>
+                    </article>
 
-                <!-- Pregunta 3 -->
-                <div class="question-block">
-                    <label>3. Ante la bancarrota moral de la república burguesa, ¿apoyaría la instauración de una Cuarta Vía Política de orden tradicional e imperial?</label>
-                    <select name="q3">
-                        <option value="">Seleccione...</option>
-                        <option value="Es la única vía sensata para rescatar la soberanía">Es la única vía sensata para rescatar la soberanía</option>
-                        <option value="Requiero mayor profundidad doctrinal">Requiero mayor profundidad doctrinal</option>
-                        <option value="Prefiero mantener el modelo republicano">Prefiero mantener el modelo republicano</option>
-                    </select>
                 </div>
-
-                <!-- Pregunta 4 -->
-                <div class="question-block">
-                    <label>4. ¿Reconoce que el sufragio universal e irrestricto sin jerarquía cívica degrada el gobierno a un concurso demagógico de popularidad?</label>
-                    <select name="q4">
-                        <option value="">Seleccione...</option>
-                        <option value="Sí, el voto sin mérito premia la demagogia">Sí, el voto sin mérito premia la demagogia</option>
-                        <option value="Tiene fallas pero es necesario">Tiene fallas pero es necesario</option>
-                        <option value="El voto universal es sagrado e indiscutible">El voto universal es sagrado e indiscutible</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 5 -->
-                <div class="question-block">
-                    <label>5. ¿Valora de manera positiva la recuperación de los principios de autoridad, jerarquía y honor civilizatorio frente al igualitarismo moderno?</label>
-                    <select name="q5">
-                        <option value="">Seleccione...</option>
-                        <option value="Son los pilares indispensables de toda civilización">Son los pilares indispensables de toda civilización</option>
-                        <option value="Debe haber un equilibrio flexible">Debe haber un equilibrio flexible</option>
-                        <option value="El igualitarismo moderno es superior">El igualitarismo moderno es superior</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 6 -->
-                <div class="question-block">
-                    <label>6. ¿Comprende que la legitimidad histórica de un Estado proviene de la continuidad dinástica y del mérito institucional, y no de comicios manipulados?</label>
-                    <select name="q6">
-                        <option value="">Seleccione...</option>
-                        <option value="Totalmente, la historia supera al efímero voto">Totalmente, la historia supera al efímero voto</option>
-                        <option value="Es un concepto complejo de aplicar hoy">Es un concepto complejo de aplicar hoy</option>
-                        <option value="Solo las urnas otorgan legitimidad">Solo las urnas otorgan legitimidad</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 7 -->
-                <div class="question-block">
-                    <label>7. ¿Estaría dispuesto a dar una oportunidad seria a la restauración de un sistema monárquico imperial que garantice estabilidad y defensa nacional?</label>
-                    <select name="q7">
-                        <option value="">Seleccione...</option>
-                        <option value="Sí, daría total oportunidad a este orden">Sí, daría total oportunidad a este orden</option>
-                        <option value="Lo evaluaría bajo resultados prácticos">Lo evaluaría bajo resultados prácticos</option>
-                        <option value="Rechazo de plano cualquier monarquía">Rechazo de plano cualquier monarquía</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 8 -->
-                <div class="question-block">
-                    <label>8. ¿Considera que los partidos de la falsa oposición venezolana han actuado como cómplices funcionales del socialismo de Estado?</label>
-                    <select name="q8">
-                        <option value="">Seleccione...</option>
-                        <option value="Son mercenarios de la política rentista">Son mercenarios de la política rentista</option>
-                        <option value="Han sido incompetentes e ingenuos">Han sido incompetentes e ingenuos</option>
-                        <option value="Representan genuinamente la oposición">Representan genuinamente la oposición</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 9 -->
-                <div class="question-block">
-                    <label>9. ¿Asume que el liberalismo económico salvaje y el colectivismo socialista son dos caras de la misma moneda materialista que destruye almas y pueblos?</label>
-                    <select name="q9">
-                        <option value="">Seleccione...</option>
-                        <option value="Ambos reducen al hombre a una simple mercancía">Ambos reducen al hombre a una simple mercancía</option>
-                        <option value="El capitalismo al menos ofrece libertad">El capitalismo al menos ofrece libertad</option>
-                        <option value="El socialismo y el capitalismo son opuestos">El socialismo y el capitalismo son opuestos</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 10 -->
-                <div class="question-block">
-                    <label>10. Siguiendo el modelo de desarrollo nacional soberano (como la Era Meiji o el Imperio Alemán), ¿apoya una economía de iniciativa privada y mérito patriótico subordinada al interés supremo del Estado imperial en lugar del libre mercado desregulado?</label>
-                    <select name="q10">
-                        <option value="">Seleccione...</option>
-                        <option value="Sí, la economía debe servir al poder y grandeza de la nación">Sí, la economía debe servir al poder y grandeza de la nación</option>
-                        <option value="Debe haber colaboración mixta bajo fuerte directriz estatal">Debe haber colaboración mixta bajo fuerte directriz estatal</option>
-                        <option value="Defiendo el libre mercado absoluto sin intervención estatal">Defiendo el libre mercado absoluto sin intervención estatal</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 11 -->
-                <div class="question-block">
-                    <label>11. ¿Juzga que la pérdida de valores morales y religiosos tradicionales ha sido el catalizador principal de la decadencia venezolana?</label>
-                    <select name="q11">
-                        <option value="">Seleccione...</option>
-                        <option value="La depravación moral destruyó el tejido social">La depravación moral destruyó el tejido social</option>
-                        <option value="Es un factor secundario frente a la economía">Es un factor secundario frente a la economía</option>
-                        <option value="La moral no tiene relación con el Estado">La moral no tiene relación con el Estado</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 12 -->
-                <div class="question-block">
-                    <label>12. ¿Reconoce que una verdadera aristocracia del mérito y el deber supera con creces a la plutocracia de los ricos de ocasión?</label>
-                    <select name="q12">
-                        <option value="">Seleccione...</option>
-                        <option value="El mérito y el honor valen más que el capital">El mérito y el honor valen más que el capital</option>
-                        <option value="El dinero siempre mandará">El dinero siempre mandará</option>
-                        <option value="La plutocracia actual es aceptable">La plutocracia actual es aceptable</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 13 -->
-                <div class="question-block">
-                    <label>13. ¿Apoya la construcción de un nuevo bloque geopolítico soberano que rompa con los hegemonismos internacionales decadentes?</label>
-                    <select name="q13">
-                        <option value="">Seleccione...</option>
-                        <option value="Es vital una postura soberana e independentista">Es vital una postura soberana e independentista</option>
-                        <option value="Debemos alinearnos con potencias existentes">Debemos alinearnos con potencias existentes</option>
-                        <option value="No veo viable esa ruptura">No veo viable esa ruptura</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 14 -->
-                <div class="question-block">
-                    <label>14. ¿Concibe que la soberanía no reside en masas atomizadas, sino en la unidad orgánica de las familias, regiones y jerarquías históricas?</label>
-                    <select name="q14">
-                        <option value="">Seleccione...</option>
-                        <option value="La sociedad es un organismo vivo, no un mercado">La sociedad es un organismo vivo, no un mercado</option>
-                        <option value="Es una visión muy tradicionalista">Es una visión muy tradicionalista</option>
-                        <option value="El individuo aislado es la base de todo">El individuo aislado es la base de todo</option>
-                    </select>
-                </div>
-
-                <!-- Pregunta 15 -->
-                <div class="question-block">
-                    <label>15. ¿Qué movimiento resuena con su sentido de lealtad y compromiso supremo para este nuevo orden?</label>
-                    <select name="movement" id="movementSelect">
-                        <option value="">Seleccione movimiento...</option>
-                        <option value="Bloque Ideológico Confert-Vierts">Bloque Ideológico Confert-Vierts</option>
-                        <option value="Movimiento Nacional Zetario">Movimiento Nacional Zetario</option>
-                    </select>
-                </div>
-
-                <!-- Opinión para el registro -->
-                <div class="question-block">
-                    <label>Deje su opinión o declaración solemne para el registro del Consejo:</label>
-                    <textarea name="opinion" id="opinionInput" placeholder="Escriba su testimonio o perspectiva..."></textarea>
-                </div>
-
-                <button type="button" onclick="processCensus()">CONSOLIDAR VOTO</button>
-            </form>
-        </div>
-
-        <!-- Sección del Ticket (Oculta al inicio) -->
-        <div id="ticket-section">
-            <div class="ticket">
-                <div class="ticket-header">
-                    S.C.L REGISTRY #<span id="ticketId">447026</span>
-                </div>
-                <div class="ticket-title">ORDEN DE CENSO Y LEALTAD</div>
-                <div class="ticket-body">
-                    <p><strong>Estado:</strong> Procesado y validado con éxito.</p>
-                    <p><strong>Destino:</strong> Eje Institucional e Internacional Monárquico.</p>
-                    <p><strong>Movimiento Adscrito:</strong> <span id="ticketMovement">---</span></p>
-                    <p><strong>Sello de Autoridad:</strong> Verificado por el Consejo.</p>
-                </div>
-                <div style="text-align: center;">
-                    <div class="stamp">SÓLO ES EL FINAL DEL PRINCIPIO PARA EL NUEVO ORDEN FINAL</div>
-                </div>
-            </div>
-            <button onclick="resetView()" style="margin-top: 25px;">VER REGISTROS PÚBLICOS</button>
-        </div>
-
-        <!-- Contadores en Tiempo Real -->
-        <div class="live-stats">
-            <h3>REGISTROS ACTIVOS EN TIEMPO REAL</h3>
-            <div class="stat-row">
-                <span>Bloque Ideológico Confert-Vierts:</span>
-                <span id="counterConfert">0</span>
-            </div>
-            <div class="stat-row">
-                <span>Movimiento Nacional Zetario:</span>
-                <span id="counterZetario">0</span>
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
 
-    <script>
-        function updateCountersDisplay() {
-            let confertCount = parseInt(localStorage.getItem('stat_confert') || 0);
-            let zetarioCount = parseInt(localStorage.getItem('stat_zetario') || 0);
+    <!-- FIREBASE Y LÓGICA DE CONTROL COMPLETA (MÓDULO OFICIAL) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getDatabase, ref, onValue, runTransaction, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-            document.getElementById('counterConfert').innerText = confertCount;
-            document.getElementById('counterZetario').innerText = zetarioCount;
+        // Configuración Oficial de Firebase del Proyecto Vorfert
+        const firebaseConfig = {
+            apiKey: "AIzaSyAtQebGc5BKt_aGLrOtCqvNvuktTCPVOts",
+            authDomain: "vorfert.firebaseapp.com",
+            databaseURL: "https://vorfert-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "vorfert",
+            storageBucket: "vorfert.firebasestorage.app",
+            messagingSenderId: "39418216472",
+            appId: "1:39418216472:web:d531ce1779ce35334fc36d",
+            measurementId: "G-R25DS424LT"
+        };
+
+        // Inicializar Firebase Realtime Database
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Referencias a la base de datos
+        const referenciaVotosConteo = ref(database, 'votos/conteo');
+        const referenciaDetalleVotos = ref(database, 'votos/registros');
+
+        // Elementos DOM
+        const form = document.getElementById('censusForm');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const formSection = document.getElementById('form-section');
+        const ticketSection = document.getElementById('ticket-section');
+        const votedMessage = document.getElementById('voted-message');
+        const textoContador = document.getElementById('contador-votos');
+        const btnSubmit = document.getElementById('btn-votar');
+        const selects = form.querySelectorAll('select');
+        const factionCards = document.querySelectorAll('.faction-card');
+
+        let selectedFaction = "Alianza General (Sin Selección)";
+
+        // 1. ESCUCHAR CONTEO EN TIEMPO REAL DESDE FIREBASE
+        onValue(referenciaVotosConteo, (snapshot) => {
+            const valorActual = snapshot.val();
+            const total = valorActual !== null ? valorActual : 0;
+            textoContador.innerHTML = `TOTAL CIUDADANOS REGISTRADOS: <span>${total}</span>`;
+        });
+
+        // 2. COMPROBAR SI YA VOTÓ
+        if (localStorage.getItem("yaVoto") === "true") {
+            votedMessage.style.display = 'block';
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = "ADHESIÓN REGISTRADA PREVIAMENTE";
         }
 
-        window.onload = function() {
-            updateCountersDisplay();
+        // 3. SELECCIÓN INTERACTIVA DE FACCIONES (BRILLO POTENCIADO)
+        factionCards.forEach(card => {
+            card.addEventListener('click', () => {
+                factionCards.forEach(c => c.classList.remove('active-faction'));
+                card.classList.add('active-faction');
+                selectedFaction = card.getAttribute('data-faccion');
+            });
+        });
 
-            // Sistema de anti-duplicación: verifica si el usuario ya votó
-            if (localStorage.getItem('csl_has_voted') === 'true') {
-                document.getElementById('form-section').style.display = 'none';
-                document.getElementById('voted-message').style.display = 'block';
+        // 4. ACTUALIZACIÓN DE BARRA DE PROGRESO
+        function updateProgress() {
+            let answered = 0;
+            selects.forEach(s => { if (s.value !== '') answered++; });
+            const percentage = Math.round((answered / 15) * 100);
+            progressBar.style.width = percentage + '%';
+            progressText.textContent = `Completado: ${answered} / 15 (${percentage}%)`;
+        }
+
+        selects.forEach(select => {
+            select.addEventListener('change', updateProgress);
+        });
+
+        // 5. GENERAR QR EN CANVAS
+        function generateQRCanvas(text) {
+            const canvas = document.getElementById('qrCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, 120, 120);
+            ctx.fillStyle = '#000000';
+            
+            let hash = 0;
+            for (let i = 0; i < text.length; i++) hash = text.charCodeAt(i) + ((hash << 5) - hash);
+            
+            for (let x = 10; x < 110; x += 10) {
+                for (let y = 10; y < 110; y += 10) {
+                    if ((Math.abs(hash * (x + y)) % 3) === 0) {
+                        ctx.fillRect(x, y, 8, 8);
+                    }
+                }
             }
+            ctx.fillRect(10, 10, 30, 30); ctx.clearRect(15, 15, 20, 20); ctx.fillRect(20, 20, 10, 10);
+            ctx.fillRect(80, 10, 30, 30); ctx.clearRect(85, 15, 20, 20); ctx.fillRect(90, 20, 10, 10);
+            ctx.fillRect(10, 80, 30, 30); ctx.clearRect(15, 85, 20, 20); ctx.fillRect(20, 90, 10, 10);
         }
 
-        function processCensus() {
-            // Verificación de duplicación de voto antes de procesar
-            if (localStorage.getItem('csl_has_voted') === 'true') {
-                alert('Usted ya ha registrado su voto anteriormente en este dispositivo.');
+        // 6. FIRMA CRIPTOGRÁFICA SHA-256
+        async function computeSHA256(str) {
+            const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // 7. ENVÍO Y PROCESAMIENTO DE FORMULARIO CON TRANSACCIÓN FIREBASE
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (localStorage.getItem("yaVoto") === "true") {
+                alert("Usted ya ha registrado su voto en este dispositivo.");
                 return;
             }
 
-            const form = document.getElementById('censusForm');
-            const formData = new FormData(form);
-
-            // Validar que todas las preguntas, estado, movimiento y opinión estén completas
-            for (let [key, value] of formData.entries()) {
-                if (!value || value.trim() === '') {
-                    alert('Por favor, responda todas las preguntas y complete su declaración antes de consolidar su voto.');
-                    return;
+            let allFilled = true;
+            selects.forEach(s => {
+                if (s.value === '') {
+                    allFilled = false;
+                    s.style.borderColor = 'var(--accent-red)';
+                } else {
+                    s.style.borderColor = 'var(--border-color)';
                 }
+            });
+
+            if (!allFilled) {
+                alert('Por favor responda las 15 preguntas institucionales antes de sellar su voto.');
+                return;
             }
 
-            const movement = document.getElementById('movementSelect').value;
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = "PROCESANDO ADHESIÓN EN NUBE...";
 
-            // Envío correcto estructurado para Formspree mediante URLSearchParams
-            fetch('https://formspree.io/f/xaqnqeer', {
-                method: 'POST',
-                body: new URLSearchParams(formData),
-                headers: {
-                    'Accept': 'application/json'
+            // Recopilar respuestas
+            const answersContainer = document.getElementById('answersList');
+            answersContainer.innerHTML = '';
+            let respuestasObjeto = {};
+            let rawDataString = `ESTADO:${form.estado.value}|FACCION:${selectedFaction}`;
+
+            selects.forEach((sel, idx) => {
+                if (sel.name !== 'estado') {
+                    const p = document.createElement('p');
+                    p.innerHTML = `<strong>P${idx}:</strong> ${sel.value}`;
+                    answersContainer.appendChild(p);
+                    respuestasObjeto[`P${idx}`] = sel.value;
+                    rawDataString += `|P${idx}:${sel.value}`;
                 }
-            }).catch(error => console.error('Error al enviar a correo:', error));
+            });
 
-            // Actualizar contadores locales en tiempo real
-            if (movement.includes("Confert")) {
-                let current = parseInt(localStorage.getItem('stat_confert') || 0) + 1;
-                localStorage.setItem('stat_confert', current);
-            } else if (movement.includes("Zetario")) {
-                let current = parseInt(localStorage.getItem('stat_zetario') || 0) + 1;
-                localStorage.setItem('stat_zetario', current);
-            }
+            // Transacción para incrementar el conteo global en Firebase en tiempo real
+            runTransaction(referenciaVotosConteo, (votosActuales) => {
+                return (votosActuales || 0) + 1;
+            }).then(async (transactionResult) => {
+                
+                const ticketNum = transactionResult.snapshot.val();
+                const formattedCount = String(ticketNum).padStart(6, '0');
 
-            // Marcar usuario como votante registrado (Sistema anti-duplicación)
-            localStorage.setItem('csl_has_voted', 'true');
+                // Firma SHA-256
+                const sha256Hash = await computeSHA256(rawDataString + Date.now());
 
-            // Generar ID de ticket aleatorio simulado
-            const randomId = Math.floor(100000 + Math.random() * 900000);
-            document.getElementById('ticketId').innerText = randomId;
-            document.getElementById('ticketMovement').innerText = movement;
+                // Guardar detalle en Firebase
+                push(referenciaDetalleVotos, {
+                    ticket: formattedCount,
+                    estado: form.estado.value,
+                    faccion: selectedFaction,
+                    respuestas: respuestasObjeto,
+                    hash: sha256Hash,
+                    fecha: new Date().toISOString()
+                });
 
-            // Transición visual fluida
-            document.getElementById('form-section').style.display = 'none';
-            document.getElementById('ticket-section').style.display = 'block';
+                // Llenar datos del Ticket impreso
+                document.getElementById('ticketNumber').textContent = `N° CSL-${formattedCount}`;
+                document.getElementById('lblEstado').textContent = form.estado.value.toUpperCase();
+                document.getElementById('lblFaccion').textContent = selectedFaction.toUpperCase();
+                document.getElementById('lblFecha').textContent = new Date().toLocaleString('es-VE');
+                document.getElementById('lblHash').textContent = `FIRMA DIGITAL HASH SHA-256: ${sha256Hash.toUpperCase()}`;
 
-            // Refrescar los contadores visuales en pantalla de inmediato
-            updateCountersDisplay();
-        }
+                generateQRCanvas(sha256Hash);
 
-        function resetView() {
-            document.getElementById('ticket-section').style.display = 'none';
-            if (localStorage.getItem('csl_has_voted') === 'true') {
-                document.getElementById('voted-message').style.display = 'block';
-            } else {
-                document.getElementById('form-section').style.display = 'block';
-            }
-        }
+                // Bloquear usuario local
+                localStorage.setItem("yaVoto", "true");
+
+                // Transición a la vista de Ticket
+                formSection.style.display = 'none';
+                ticketSection.style.display = 'block';
+                votedMessage.style.display = 'block';
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            }).catch((error) => {
+                console.error("Error al registrar en Firebase:", error);
+                alert("Error de conexión con la base de datos de Firebase: " + error.message);
+                btnSubmit.disabled = false;
+                btnSubmit.innerText = "CONSOLIDAR ADHESIÓN Y REGISTRAR CENSO";
+            });
+        });
     </script>
 </body>
 </html>
